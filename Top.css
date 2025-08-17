@@ -1,0 +1,368 @@
+/* 共通リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-width: 100%;
+  width: 100%; /* 明示的に幅を100%に設定 */
+  overflow-x: hidden; /* 横スクロールバーを非表示にする */
+  margin: 0; /* デフォルトマージンを確実に削除 */
+  padding: 0; /* デフォルトパディングを確実に削除 */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  background-color: #A6D9F7; /* ベースの淡い青 */
+  color: #333;
+  font-size: 1rem; /* ベースフォントサイズ */
+}
+
+/* ヘッダー */
+.main-header {
+  background-color: #2C3E50; /* ダークブルー */
+  color: #fff;
+  position: relative;
+  z-index: 10;
+  padding: 0.5rem 0;
+  width: 100%; /* ヘッダーが全幅になるように設定 */
+  box-sizing: border-box; /* パディングを幅に含める */
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  max-width: 100%; /* コンテンツがはみ出さないように制限 */
+  box-sizing: border-box; /* パディングを幅に含める */
+}
+.logo-area {
+  height: auto;
+}
+.logo-link {
+  color: #fff; /* 白 */
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  padding: 0;
+}
+.logo-wrapper {
+  margin: 0;
+}
+.logo-text {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.333;
+}
+.logo-title {
+  color: #fff;
+}
+.nav-area {
+  background-color: #2C3E50; /* ダークブルー */
+}
+.nav-wrapper {
+  padding-left: 0;
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav-list {
+  color: #fff; /* 白 */
+}
+.nav-item {
+  position: relative;
+  overflow: visible;
+}
+.nav-item > .nav-link {
+  color: #D95F00; /* アクセントの柿色 */
+  font-weight: 400;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  font-size: 0.9rem;
+}
+
+.nav-item.has-submenu > .nav-link {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.submenu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2C3E50; /* ダークブルー */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100;
+  list-style: none;
+  padding: 0.5rem 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.submenu li a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.875rem;
+}
+
+.submenu li a:hover {
+  background-color: #5FA2D5; /* ミディアムブルー */
+}
+
+.nav-item.has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* メインコンテンツ */
+.main-content {
+  background-color: #A6D9F7; /* ベースの淡い青 */
+  overflow-x: hidden;
+}
+
+.hero-section {
+  background-color: #5FA2D5; /* 少し濃いめの青 */
+  height: 340px;
+  padding-bottom: 60px;
+  padding-top: 60px;
+  background-image: url(https://ssl.gstatic.com/atari/images/simple-header-blended-small.png); /* Note: Consider self-hosting this image for better control and reliability */
+  background-size: cover;
+  background-position: center;
+  position: relative; /* ::before 疑似要素の基準位置とするため追加 */
+}
+
+.hero-section::before {
+  background-color: #2C3E50; /* ダークブルー */
+  opacity: 0.4;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* コンテンツの下に配置 */
+}
+.hero-content {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 0;
+}
+.hero-text-wrapper {
+  padding: 0 2rem;
+}
+.hero-heading-group {
+  margin-top: 0;
+}
+.hero-title {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.hero-subtitle {
+  color: #fff;
+  font-size: 1.1875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 20px;
+}
+
+/* infoセクション（折り畳み） */
+.info-section {
+  padding: 2rem;
+  /* cursor: pointer; */ /* summaryがcursorを持つため削除 */
+  background-color: #E0F2F9; /* セクション全体の背景色 */
+  margin-bottom: 20px;
+  border-radius: 5px;
+  /* overflow: hidden; */ /* detailsタグ自身がoverflowを処理 */
+}
+
+.info-details {
+  border-radius: 5px;
+  /* overflow: hidden; */ /* info-sectionで処理 */
+  background-color: #E0F2F9; /* details自身の背景色 */
+}
+
+.collapsible-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: #A6D9F7; /* 淡い青 */
+  color: #2C3E50; /* ダークブルーのテキスト */
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.collapsible-summary::-webkit-details-marker, /* Webkit browsers */
+.collapsible-summary::marker { /* Standard */
+  display: none; /* デフォルトの矢印を非表示 */
+}
+
+.collapsible-summary:hover {
+  background-color: #5FA2D5; /* ホバー時の色変更 */
+}
+
+.info-details[open] > .collapsible-summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.info-details[open] > .collapsible-summary .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.info-container {
+  padding: 0 2rem;
+}
+.info-wrapper {
+  margin: 0 auto;
+  max-width: 800px;
+}
+.info-content {
+  /* detailsタグの子要素になり、直接のコンテナではないため、パディングを調整 */
+  /* background-color: #E0F2F9; */ /* detailsタグに設定 */
+  /* border-top: 1px solid #D1EEF8; */ /* info-detailsの後にコンテンツがある形になるので調整 */
+  /* border-bottom-left-radius: 5px; */
+  /* border-bottom-right-radius: 5px; */
+  /* padding-top: 2rem; */ /* info-paragraphで調整 */
+  box-sizing: border-box;
+}
+
+.info-paragraph {
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6667;
+  margin-top: 12px;
+  padding: 0 1rem 1rem; /* 左右と下部にパディングを追加 */
+}
+
+.info-title {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* クイックリンク・最近のお知らせ・外部リンクセクション */
+.quick-links-section,
+.recent-news-section,
+.external-links-section {
+  padding: 2rem;
+  margin-bottom: 20px;
+  background-color: #E0F2F9; /* 淡い青の背景 */
+  border-top: 1px solid #D1EEF8; /* 淡い青のボーダー */
+}
+
+.quick-links-container,
+.recent-news-container,
+.external-links-container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.quick-links-title,
+.recent-news-title,
+.external-links-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2C3E50; /* ダークブルーのテキスト */
+}
+
+.quick-links-list,
+.recent-news-list,
+.external-links-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.quick-links-list li a,
+.recent-news-list li a,
+.external-links-list li a {
+  color: #D95F00; /* アクセントの柿色 */
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0;
+}
+
+.quick-links-list li a:hover,
+.recent-news-list li a:hover,
+.external-links-list li a:hover {
+  text-decoration: underline;
+}
+
+.all-news-link a {
+  color: #D95F00; /* アクセントの柿色 */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.all-news-link a:hover {
+  text-decoration: underline;
+}
+
+/* フッター */
+.main-footer {
+  background-color: #2C3E50; /* ダークブルー */
+  color: #fff;
+  padding: 1rem;
+}
+.footer-container {
+  text-align: center;
+}
+.footer-wrapper {
+  margin: 0 auto;
+  max-width: 800px;
+}
+.footer-content {
+  padding: 1rem 0;
+}
+.footer-copyright {
+  font-size: 0.9rem;
+}
+
+/* レスポンシブ対応 */
+@media only screen and (max-width: 479px) {
+  .logo-link {
+    padding-left: 24px;
+    padding-right: 18px;
+  }
+  .logo-wrapper {
+    margin-left: 24px;
+    margin-right: 12px;
+  }
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
